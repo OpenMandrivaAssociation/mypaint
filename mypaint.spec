@@ -67,5 +67,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/%{name}
 %{_datadir}/%{name}/*
 %{_datadir}/applications/%{name}.desktop
-%{_libdir}/%{name}/_mypaintlib.so
+/usr/lib/%{name}/_mypaintlib.so
 
