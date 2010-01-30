@@ -5,8 +5,8 @@
 %define date	    %(echo `LC_ALL="C" date +"%a %b %d %Y"`)
 
 %define name mypaint
-%define version 0.7.1
-%define release %mkrel 2
+%define version 0.8.0
+%define release %mkrel 1
 
 Name:		%{name}
 Version:	%{version}
@@ -32,15 +32,28 @@ pygtk with C extensions.
 
 %prep
 %setup -q
+# the Options class is deprecated; use the Variables class instead
+sed -i 's|PathOption|PathVariable|g' SConstruct
+sed -i 's|Options|Variables|g' SConstruct
+# for 64 bit
+sed -i 's|lib/mypaint|%{_lib}/mypaint|g' SConstruct mypaint.py
+# fix menu icon
+sed -i 's|mypaint_48|mypaint|g' desktop/%{name}.desktop
 
 %build
 scons
 
 %install
-rm -rf $RPM_BUILD_ROOT
-scons prefix=$RPM_BUILD_ROOT/usr install
+rm -rf %{buildroot}
+scons prefix=%{buildroot}/usr install
+%find_lang %{name}
+desktop-file-install \
+  --remove-key="Encoding" \
+  --add-category="RasterGraphics;GTK;" \
+  --dir=%{buildroot}%{_datadir}/applications \
+   %{buildroot}%{_datadir}/applications/%{name}.desktop
 
-install -m 0644 %SOURCE1 $RPM_BUILD_ROOT%{_datadir}/applications/%{name}.desktop
+
 
 %if %mdkversion < 200900
 %post
@@ -53,7 +66,7 @@ install -m 0644 %SOURCE1 $RPM_BUILD_ROOT%{_datadir}/applications/%{name}.desktop
 %endif
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %post
 %{update_desktop_database}
@@ -61,11 +74,12 @@ rm -rf $RPM_BUILD_ROOT
 %postun
 %{clean_desktop_database}
 
-%files
+%files -f %{name}.lang
 %defattr(-,root,root,-)
 %doc README LICENSE COPYING changelog
 %{_bindir}/%{name}
 %{_datadir}/%{name}/*
 %{_datadir}/applications/%{name}.desktop
-/usr/lib/%{name}/_mypaintlib.so
+%{_iconsdir}/hicolor/*/apps/mypaint.*
+%{_libdir}/%{name}/_mypaintlib.so
 
