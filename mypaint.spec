@@ -16,13 +16,14 @@ Group:		Graphics
 License:	GPLv2+
 URL:		http://mypaint.intilinux.com/
 Source0:	http://download.gna.org/mypaint/%{name}/%{name}-%{version}.tar.bz2
-Source1:	mypaint.desktop
 BuildRoot:	%{_tmppath}/%{name}-buildroot
-
-BuildRequires:	%mklibname gtk+2.0_0-devel
-BuildRequires:	python-devel pygtk2.0-devel python-numpy-devel scons swig desktop-file-utils
-
-Requires:	gtk+2.0 pygtk2.0 python python-numpy python-gobject python-cairo
+BuildRequires:	pygtk2.0-devel
+BuildRequires:	scons
+BuildRequires:	swig
+BuildRequires:	desktop-file-utils
+BuildRequires:	python-numpy-devel
+BuildRequires:	protobuf-compiler
+Requires:	pygtk2.0
 
 %description
 Mypaint is a fast and easy/simple painter app focused on the painter, 
