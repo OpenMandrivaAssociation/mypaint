@@ -6,7 +6,7 @@
 
 %define name mypaint
 %define version 0.8.2
-%define release %mkrel 1
+%define release %mkrel 2
 
 Name:		%{name}
 Version:	%{version}
@@ -24,6 +24,7 @@ BuildRequires:	desktop-file-utils
 BuildRequires:	python-numpy-devel
 BuildRequires:	protobuf-compiler
 Requires:	pygtk2.0
+Requires:	python-protobuf
 
 %description
 Mypaint is a fast and easy/simple painter app focused on the painter, 
