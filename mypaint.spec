@@ -5,8 +5,8 @@
 %define date	    %(echo `LC_ALL="C" date +"%a %b %d %Y"`)
 
 %define name mypaint
-%define version 0.8.2
-%define release %mkrel 2
+%define version 0.9.0
+%define release %mkrel 1
 
 Name:		%{name}
 Version:	%{version}
@@ -18,7 +18,7 @@ URL:		http://mypaint.intilinux.com/
 Source0:	http://download.gna.org/mypaint/%{name}/%{name}-%{version}.tar.bz2
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	pygtk2.0-devel
-BuildRequires:	scons
+BuildRequires:	python-scons scons
 BuildRequires:	swig
 BuildRequires:	desktop-file-utils
 BuildRequires:	python-numpy-devel
