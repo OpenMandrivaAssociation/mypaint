@@ -5,7 +5,7 @@
 %define date	    %(echo `LC_ALL="C" date +"%a %b %d %Y"`)
 
 %define name mypaint
-%define version 0.9.0
+%define version 0.9.1
 %define release %mkrel 1
 
 Name:		%{name}
