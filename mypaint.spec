@@ -5,7 +5,7 @@
 %define date	    %(echo `LC_ALL="C" date +"%a %b %d %Y"`)
 
 %define name mypaint
-%define version 0.9.1
+%define version 1.0.0
 %define release %mkrel 1
 
 Name:		%{name}
@@ -82,6 +82,5 @@ rm -rf %{buildroot}
 %{_bindir}/%{name}
 %{_datadir}/%{name}/*
 %{_datadir}/applications/%{name}.desktop
-%{_iconsdir}/hicolor/*/apps/mypaint.*
+%{_iconsdir}/hicolor/*
 %{_libdir}/%{name}/_mypaintlib.so
-
