@@ -6,7 +6,7 @@
 
 Name:		mypaint
 Version:	1.0.0
-Release:	3
+Release:	4
 Summary:	A simple paint program
 Group:		Graphics
 License:	GPLv2+
