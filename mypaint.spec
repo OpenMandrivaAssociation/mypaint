@@ -5,22 +5,33 @@
 %define date	    %(echo `LC_ALL="C" date +"%a %b %d %Y"`)
 
 Name:		mypaint
-Version:	1.0.0
-Release:	4
+Version:	2.0.0
+Release:	1
 Summary:	A simple paint program
 Group:		Graphics
 License:	GPLv2+
-URL:		http://mypaint.intilinux.com/
-Source0:	http://download.gna.org/mypaint/%{name}/%{name}-%{version}.tar.bz2
-BuildRoot:	%{_tmppath}/%{name}-buildroot
-BuildRequires:	pygtk2.0-devel
+URL:		http://mypaint.org
+Source0:	https://github.com/mypaint/mypaint/releases/download/v%{version}/%{name}-%{version}.tar.xz
+
 BuildRequires:	python-scons scons
-BuildRequires:	swig
+BuildRequires: swig
 BuildRequires:	desktop-file-utils
-BuildRequires:	python-numpy-devel
+BuildRequires: python3dist(numpy)
 BuildRequires:	protobuf-compiler
 BuildRequires:	pkgconfig(lapack)
-Requires:	pygtk2.0
+BuildRequires: pkgconfig(py3cairo)
+BuildRequires: python
+BuildRequires: pkgconfig(python)
+BuildRequires: pkgconfig(glib-2.0)
+BuildRequires: pkgconfig(gtk+-3.0)
+BuildRequires: python3egg(distribute)
+BuildRequires: python3dist(pygobject)
+BuildRequires: pkgconfig(json)
+BuildRequires: pkgconfig(json-c)
+BuildRequires: pkgconfig(lcms2)
+BuildRequires: pkgconfig(libmypaint-2.0)
+BuildRequires: pkgconfig(libpng)
+BuildRequires: pkgconfig(mypaint-brushes-2.0) >= 2.0.2
 Requires:	python-protobuf
 
 %description
@@ -31,19 +42,13 @@ pygtk with C extensions.
 
 %prep
 %setup -q
-# the Options class is deprecated; use the Variables class instead
-sed -i 's|PathOption|PathVariable|g' SConstruct
-sed -i 's|Options|Variables|g' SConstruct
-# for 64 bit
-sed -i 's|lib/mypaint|%{_lib}/mypaint|g' SConstruct mypaint.py
-# fix menu icon
-sed -i 's|mypaint_48|mypaint|g' desktop/%{name}.desktop
-
 %build
-scons
+python setup.py build
 
 %install
-scons prefix=%{buildroot}/usr install
+
+python setup.py install
+
 %find_lang %{name}
 desktop-file-install \
   --remove-key="Encoding" \
