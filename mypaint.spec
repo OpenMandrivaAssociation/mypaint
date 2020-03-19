@@ -41,7 +41,7 @@ pygtk with C extensions.
 %__python setup.py build
 
 %install
-%__python setup.py install --root=%{buildroot}
+%__python setup.py install --root=%{buildroot} --skip-build
 
 %find_lang %{name}
 desktop-file-install \
