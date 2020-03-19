@@ -1,9 +1,3 @@
-%define use_ccache 1
-%define ccachedir~/.ccache-OOo%{mdvsuffix}
-%{?_with_ccache: %global use_ccache 1}
-%{?_without_ccache: %global use_ccache 0}
-%define date	    %(echo `LC_ALL="C" date +"%a %b %d %Y"`)
-
 Name:		mypaint
 Version:	2.0.0
 Release:	1
@@ -44,11 +38,10 @@ pygtk with C extensions.
 %prep
 %setup -q
 %build
-python setup.py build
+%__python setup.py build
 
 %install
-
-python setup.py install
+%__python setup.py install --root=%{buildroot}
 
 %find_lang %{name}
 desktop-file-install \
