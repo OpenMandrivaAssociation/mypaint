@@ -26,10 +26,10 @@ BuildRequires: pkgconfig(glib-2.0)
 BuildRequires: pkgconfig(gtk+-3.0)
 BuildRequires: python3egg(distribute)
 BuildRequires: python3dist(pygobject)
-BuildRequires: pkgconfig(json)
+#BuildRequires: pkgconfig(json)
 BuildRequires: pkgconfig(json-c)
 BuildRequires: pkgconfig(lcms2)
-BuildRequires: pkgconfig(libmypaint-2.0)
+BuildRequires: pkgconfig(libmypaint)
 BuildRequires: pkgconfig(libpng)
 BuildRequires: pkgconfig(mypaint-brushes-2.0) >= 2.0.2
 Requires:	python-protobuf
