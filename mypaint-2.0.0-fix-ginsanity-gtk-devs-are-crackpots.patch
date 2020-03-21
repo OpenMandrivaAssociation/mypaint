@@ -1,0 +1,12 @@
+diff -up mypaint-2.0.0/lib/meta.py.omv~ mypaint-2.0.0/lib/meta.py
+--- mypaint-2.0.0/lib/meta.py.omv~	2020-03-21 18:04:30.403851633 +0100
++++ mypaint-2.0.0/lib/meta.py	2020-03-21 18:06:28.044026017 +0100
+@@ -264,7 +264,7 @@ def _get_versions(gitprefix="gitexport")
+         # If release information from release.sh exists, use that
+         relinfo = {}
+         with open("release_info", "rb") as relinfo_fp:
+-            exec(relinfo_fp, relinfo)
++            exec(relinfo_fp.read(), relinfo)
+         base_version = relinfo.get(
+             "MYPAINT_VERSION_BASE",
+             base_version,
