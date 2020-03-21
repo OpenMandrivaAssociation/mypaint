@@ -28,7 +28,6 @@ BuildRequires: pkgconfig(lcms2)
 BuildRequires: pkgconfig(libmypaint)
 BuildRequires: pkgconfig(libpng)
 BuildRequires: pkgconfig(mypaint-brushes-2.0) >= 2.0.2
-Requires:	python-protobuf
 
 %description
 Mypaint is a fast and easy/simple painter app focused on the painter, 
