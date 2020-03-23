@@ -2,7 +2,7 @@
 
 Name:		mypaint
 Version:	2.0.0
-Release:	2
+Release:	3
 Summary:	A simple paint program
 Group:		Graphics
 License:	GPLv2+
@@ -32,6 +32,7 @@ BuildRequires: pkgconfig(libpng)
 BuildRequires: pkgconfig(mypaint-brushes-2.0) >= 2.0.2
 
 Requires:     mypaint-brushes
+Requires:     python3dist(protobuf)
 
 %description
 Mypaint is a fast and easy/simple painter app focused on the painter, 
