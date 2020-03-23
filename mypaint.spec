@@ -1,6 +1,8 @@
+%global optflags %optflags -Ofast
+
 Name:		mypaint
 Version:	2.0.0
-Release:	1
+Release:	2
 Summary:	A simple paint program
 Group:		Graphics
 License:	GPLv2+
@@ -29,6 +31,8 @@ BuildRequires: pkgconfig(libmypaint)
 BuildRequires: pkgconfig(libpng)
 BuildRequires: pkgconfig(mypaint-brushes-2.0) >= 2.0.2
 
+Requires:     mypaint-brushes
+
 %description
 Mypaint is a fast and easy/simple painter app focused on the painter, 
 so you can only focus on the art and not the program itself. 
@@ -50,14 +54,6 @@ desktop-file-install \
   --add-category="RasterGraphics;GTK;" \
   --dir=%{buildroot}%{_datadir}/applications \
    %{buildroot}%{_datadir}/applications/%{name}.desktop
-
-
-
-%post
-%{update_desktop_database}
-
-%postun
-%{clean_desktop_database}
 
 %files -f %{name}.lang
 %defattr(-,root,root,-)
