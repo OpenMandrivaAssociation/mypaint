@@ -1,8 +1,8 @@
 %global optflags %optflags -Ofast
 
 Name:		mypaint
-Version:	2.0.0
-Release:	4
+Version:	2.0.1
+Release:	1
 Summary:	A simple paint program
 Group:		Graphics
 License:	GPLv2+
