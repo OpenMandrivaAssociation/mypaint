@@ -2,7 +2,7 @@
 
 Name:		mypaint
 Version:	2.0.1
-Release:	1
+Release:	2
 Summary:	A simple paint program
 Group:		Graphics
 License:	GPLv2+
@@ -44,10 +44,10 @@ pygtk with C extensions.
 %autosetup -p1
 
 %build
-%__python setup.py build
+%py_build
 
 %install
-%__python setup.py install --root=%{buildroot} --skip-build
+%py_install
 
 %find_lang %{name}
 desktop-file-install \
