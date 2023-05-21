@@ -8,6 +8,7 @@ Group:		Graphics
 License:	GPLv2+
 URL:		http://mypaint.org
 Source0:	https://github.com/mypaint/mypaint/releases/download/v%{version}/%{name}-%{version}.tar.xz
+Patch0:		mypaint-2.0.1-port_to_python_3.11.patch
 #Patch0:		mypaint-2.0.0-fix-ginsanity-gtk-devs-are-crackpots.patch
 
 BuildRequires:	python-scons scons
